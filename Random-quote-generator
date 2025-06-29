@@ -1,0 +1,53 @@
+// Data for quotes (can be expanded)
+const quotes = [
+    {
+        quote: "The only way to do great work is to love what you do.",
+        author: "Steve Jobs"
+    },
+    {
+        quote: "Innovation distinguishes between a leader and a follower.",
+        author: "Steve Jobs"
+    },
+    {
+        quote: "Believe you can and you're halfway there.",
+        author: "Theodore Roosevelt"
+    },
+    {
+        quote: "The future belongs to those who believe in the beauty of their dreams.",
+        author: "Eleanor Roosevelt"
+    }
+];
+
+// Function to get a random quote
+function getRandomQuote() {
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+    return quotes[randomIndex];
+}
+
+// Function to display a new quote
+function displayNewQuote() {
+    const { quote, author } = getRandomQuote();
+    
+    // Assuming you have HTML elements with these IDs to display the quote and author
+    const quoteDisplay = document.getElementById('quoteDisplay');
+    const authorDisplay = document.getElementById('authorDisplay');
+
+    if (quoteDisplay && authorDisplay) {
+        quoteDisplay.textContent = `"${quote}"`;
+        authorDisplay.textContent = `- ${author}`;
+    } else {
+        console.error("HTML elements 'quoteDisplay' or 'authorDisplay' not found.");
+    }
+}
+
+// Event listener for a button (assuming a button with id 'newQuoteBtn' exists)
+document.addEventListener('DOMContentLoaded', () => {
+    const newQuoteBtn = document.getElementById('newQuoteBtn');
+    if (newQuoteBtn) {
+        newQuoteBtn.addEventListener('click', displayNewQuote);
+    } else {
+        console.warn("Button with ID 'newQuoteBtn' not found. Automatic quote display on load.");
+        // If no button, display a quote on page load
+        displayNewQuote();
+    }
+});
