@@ -1,0 +1,4 @@
+<button onclick="score++;btn.innerText='Score: '+score">Click Me!</button>
+<script>
+let score = 0, btn = document.querySelector('button');
+</script>
