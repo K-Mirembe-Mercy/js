@@ -1,0 +1,8 @@
+const numbers = [10, 20, 30, 40, 50]; // 1. Declare an array of numbers
+let sum = 0; // 2. Initialize a variable to store the sum
+
+for (let i = 0; i < numbers.length; i++) { // 3. Loop through the array
+  sum += numbers[i]; // 4. Add each number to the sum
+}
+
+console.log("The sum is:", sum); // 5. Print the final sum
