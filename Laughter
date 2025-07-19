@@ -1,0 +1,11 @@
+function laugh(num) {
+  let laughString = "";
+  for (let i = 0; i < num; i++) {
+    laughString += "ha";
+  }
+  return laughString + "!";
+}
+
+// Example usage:
+console.log(laugh(3)); // Output: hahaha!
+console.log(laugh(5)); // Output: hahahahaha!
