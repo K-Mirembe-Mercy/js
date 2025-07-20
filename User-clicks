@@ -1,0 +1,9 @@
+// Get a button element
+const myButton = document.getElementById("myButton");
+
+// Add an event listener for clicks
+if (myButton) {
+  myButton.addEventListener("click", function() {
+    alert("Button clicked!");
+  });
+}
