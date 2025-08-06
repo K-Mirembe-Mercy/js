@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Attendance</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .student-item { margin-bottom: 10px; }
+        .student-item button { margin-left: 10px; padding: 5px 10px; cursor: pointer; }
+        .present { color: green; font-weight: bold; }
+        .absent { color: red; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Student Attendance</h1>
+
+    <div id="studentList">
+        <!-- Student items will be populated here by JavaScript -->
+    </div>
+
+    <script>
+        const students = [
+            { id: 1, name: "Alice Smith" },
+            { id: 2, name: "Bob Johnson" },
+            { id: 3, name: "Charlie Brown" }
+        ];
+
+        const attendance = {}; // Stores attendance status: { studentId: "present" | "absent" }
+
+        const studentListDiv = document.getElementById('studentList');
+
+        function renderStudents() {
+            studentListDiv.innerHTML = ''; // Clear previous list
+            students.forEach(student => {
+                const studentDiv = document.createElement('div');
+                studentDiv.classList.add('student-item');
+
+                const status = attendance[student.id] || 'N/A';
+                const statusClass = status === 'present' ? 'present' : (status === 'absent' ? 'absent' : '');
+
+                studentDiv.innerHTML = `
+                    <span>${student.name}</span>
+                    <span class="${statusClass}">Status: ${status}</span>
+                    <button onclick="markAttendance(${student.id}, 'present')">Present</button>
+                    <button onclick="markAttendance(${student.id}, 'absent')">Absent</button>
+                `;
+                studentListDiv.appendChild(studentDiv);
+            });
+        }
+
+        function markAttendance(studentId, status) {
+            attendance[studentId] = status;
+            renderStudents(); // Re-render the list to update status
+        }
+
+        // Initial rendering when the page loads
+        document.addEventListener('DOMContentLoaded', renderStudents);
+    </script>
+</body>
+</html>
